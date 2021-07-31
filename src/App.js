@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {Suspense} from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Link } from 'react-router-dom';
+
+function Main(){
+    return <div><Link to="/another">go somewhere else</Link></div>
+}
+const Another = React.lazy(() => import('./Another.jsx'));
+const Loader = ()=> <div>loading...</div>
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+  return <>
+  FOOT
+  <Router>
+    <Switch>
+      <Route exact path="/" render={Main} />
+      <Route path="/another" render={()=><Suspense fallback={<><Loader/></>}><Another/></Suspense>} />
+    </Switch>
+  </Router>
+  </>
+};
 
 export default App;
