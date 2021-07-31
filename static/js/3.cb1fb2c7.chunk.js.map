@@ -1,0 +1,1 @@
+{"version":3,"sources":["Another.jsx"],"names":["Another"],"mappings":"6GAAA,+DAEe,SAASA,IACpB,OAAO","file":"static/js/3.cb1fb2c7.chunk.js","sourcesContent":["import React from 'react';\n\nexport default function Another(){\n    return <div>another location</div>\n}"],"sourceRoot":""}
